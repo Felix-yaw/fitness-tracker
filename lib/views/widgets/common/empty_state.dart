@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
 
-/// Friendly empty/placeholder state.
+/// Outlined empty/placeholder state.
 class EmptyState extends StatelessWidget {
   const EmptyState({
     super.key,
@@ -30,24 +30,22 @@ class EmptyState extends StatelessWidget {
             Container(
               width: 96,
               height: 96,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: AppColors.surface,
                 shape: BoxShape.circle,
+                border: Border.all(color: AppColors.ink, width: 2.5),
+                boxShadow: AppColors.hardShadow,
               ),
-              child: Icon(
-                icon,
-                size: 40,
-                color: AppColors.inkTertiary,
-              ),
+              child: Icon(icon, size: 40, color: AppColors.ink),
             ),
-            const SizedBox(height: 22),
+            const SizedBox(height: 24),
             Text(
               title,
               textAlign: TextAlign.center,
               style: const TextStyle(
-                fontSize: 19,
-                fontWeight: FontWeight.w800,
-                letterSpacing: -0.4,
+                fontSize: 20,
+                fontWeight: FontWeight.w900,
+                letterSpacing: -0.6,
                 color: AppColors.ink,
               ),
             ),
@@ -58,11 +56,12 @@ class EmptyState extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 14,
                 height: 1.5,
+                fontWeight: FontWeight.w500,
                 color: AppColors.inkSecondary,
               ),
             ),
             if (actionLabel != null && onAction != null) ...<Widget>[
-              const SizedBox(height: 22),
+              const SizedBox(height: 24),
               SizedBox(
                 width: 200,
                 child: FilledButton(

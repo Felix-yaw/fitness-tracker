@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
-import '../common/glass_card.dart';
+import '../common/neo_card.dart';
 
-/// Floating white bottom navigation bar; the active item expands into a
-/// dark pill with its label (matching the reference design).
+/// Floating bottom navigation bar; the active tab expands into a black pill.
 class FloatingNavBar extends StatelessWidget {
   const FloatingNavBar({
     super.key,
@@ -24,12 +23,10 @@ class FloatingNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GlassCard(
+    return NeoCard(
       margin: const EdgeInsets.fromLTRB(20, 0, 20, 16),
-      radius: 28,
-      blur: 24,
-      opacity: 0.5,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+      radius: 20,
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
@@ -69,15 +66,15 @@ class _NavItem extends StatelessWidget {
       onTap: onTap,
       behavior: HitTestBehavior.opaque,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 220),
         curve: Curves.easeOutCubic,
         padding: EdgeInsets.symmetric(
-          horizontal: selected ? 18 : 14,
-          vertical: 12,
+          horizontal: selected ? 16 : 14,
+          vertical: 10,
         ),
         decoration: BoxDecoration(
           color: selected ? AppColors.ink : Colors.transparent,
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(14),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -85,10 +82,10 @@ class _NavItem extends StatelessWidget {
             Icon(
               selected ? data.selectedIcon : data.icon,
               size: 22,
-              color: selected ? Colors.white : AppColors.inkSecondary,
+              color: selected ? AppColors.surface : AppColors.inkSecondary,
             ),
             AnimatedSize(
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 220),
               curve: Curves.easeOutCubic,
               child: selected
                   ? Padding(
@@ -96,9 +93,9 @@ class _NavItem extends StatelessWidget {
                       child: Text(
                         data.label,
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: AppColors.surface,
                           fontSize: 13,
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w800,
                         ),
                       ),
                     )

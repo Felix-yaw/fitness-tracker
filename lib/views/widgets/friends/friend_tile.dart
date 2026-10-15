@@ -35,7 +35,7 @@ class FriendTile extends StatelessWidget {
                   friend.name,
                   style: const TextStyle(
                     fontSize: 15,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w800,
                     color: AppColors.ink,
                   ),
                 ),
@@ -55,7 +55,7 @@ class FriendTile extends StatelessWidget {
                         '${friend.changePercent}% active',
                         style: const TextStyle(
                           fontSize: 12,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w700,
                           color: AppColors.inkSecondary,
                         ),
                       ),
@@ -64,6 +64,7 @@ class FriendTile extends StatelessWidget {
                         '· ${friend.workoutsThisWeek} workouts',
                         style: const TextStyle(
                           fontSize: 12,
+                          fontWeight: FontWeight.w600,
                           color: AppColors.inkTertiary,
                         ),
                       ),
@@ -108,32 +109,33 @@ class _Avatar extends StatelessWidget {
           Container(
             width: 48,
             height: 48,
-            decoration: const BoxDecoration(
-              color: AppColors.accentSoft,
+            decoration: BoxDecoration(
+              color: AppColors.surface,
               shape: BoxShape.circle,
+              border: Border.all(color: AppColors.ink, width: 2),
             ),
             child: Center(
               child: Text(
                 friend.initials,
                 style: const TextStyle(
                   fontSize: 15,
-                  fontWeight: FontWeight.w800,
-                  color: AppColors.accent,
+                  fontWeight: FontWeight.w900,
+                  color: AppColors.ink,
                 ),
               ),
             ),
           ),
           if (friend.isActiveToday)
             Positioned(
-              right: 0,
-              bottom: 0,
+              right: -2,
+              bottom: -2,
               child: Container(
-                width: 14,
-                height: 14,
+                width: 16,
+                height: 16,
                 decoration: BoxDecoration(
                   color: AppColors.positive,
                   shape: BoxShape.circle,
-                  border: Border.all(color: AppColors.surface, width: 2),
+                  border: Border.all(color: AppColors.ink, width: 2),
                 ),
               ),
             ),
@@ -157,18 +159,14 @@ class _Pill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: filled ? AppColors.ink : Colors.white.withValues(alpha: 0.7),
+      color: filled ? AppColors.ink : AppColors.surface,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-        side: BorderSide(
-          color: filled
-              ? AppColors.ink
-              : Colors.white.withValues(alpha: 0.9),
-        ),
+        borderRadius: BorderRadius.circular(10),
+        side: const BorderSide(color: AppColors.ink, width: 2),
       ),
       child: InkWell(
         customBorder: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(10),
         ),
         onTap: onTap,
         child: Padding(
@@ -177,8 +175,8 @@ class _Pill extends StatelessWidget {
             label,
             style: TextStyle(
               fontSize: 12,
-              fontWeight: FontWeight.w700,
-              color: filled ? Colors.white : AppColors.ink,
+              fontWeight: FontWeight.w800,
+              color: filled ? AppColors.surface : AppColors.ink,
             ),
           ),
         ),

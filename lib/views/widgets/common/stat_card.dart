@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
-import 'glass_card.dart';
+import 'neo_card.dart';
 
-/// Frosted stat card: a small label row, a large value and optional
-/// subtitle / custom body / warm glow behind the value.
+/// Stat card: uppercase label, large value and optional subtitle / body.
 class StatCard extends StatelessWidget {
   const StatCard({
     super.key,
@@ -13,7 +12,7 @@ class StatCard extends StatelessWidget {
     this.subtitle,
     this.subtitleColor = AppColors.positive,
     this.onTap,
-    this.glow = false,
+    this.highlight = false,
     this.child,
   });
 
@@ -22,92 +21,72 @@ class StatCard extends StatelessWidget {
   final String? subtitle;
   final Color subtitleColor;
   final VoidCallback? onTap;
-  final bool glow;
+
+  /// Render on the acid-lime accent.
+  final bool highlight;
   final Widget? child;
 
   @override
   Widget build(BuildContext context) {
-    return GlassCard(
-      radius: 22,
+    return NeoCard(
+      radius: 18,
       padding: const EdgeInsets.all(16),
       onTap: onTap,
-      child: Stack(
+      highlight: highlight,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          if (glow)
-            Positioned(
-              right: -30,
-              bottom: -40,
-              child: IgnorePointer(
-                child: Container(
-                  width: 130,
-                  height: 130,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: RadialGradient(
-                      colors: <Color>[
-                        AppColors.accent.withValues(alpha: 0.45),
-                        AppColors.accent.withValues(alpha: 0.0),
-                      ],
-                    ),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: Text(
+                  label.toUpperCase(),
+                  style: const TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 0.6,
+                    color: AppColors.inkSecondary,
                   ),
+                ),
+              ),
+              if (onTap != null)
+                const Icon(
+                  Icons.north_east_rounded,
+                  size: 16,
+                  color: AppColors.ink,
+                ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          if (value != null)
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.centerLeft,
+              child: Text(
+                value!,
+                style: const TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: -1.0,
+                  color: AppColors.ink,
                 ),
               ),
             ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Text(
-                      label,
-                      style: const TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.inkSecondary,
-                      ),
-                    ),
-                  ),
-                  if (onTap != null)
-                    const Icon(
-                      Icons.chevron_right_rounded,
-                      size: 18,
-                      color: AppColors.inkTertiary,
-                    ),
-                ],
+          if (subtitle != null) ...<Widget>[
+            const SizedBox(height: 4),
+            Text(
+              subtitle!,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w700,
+                color: subtitleColor,
               ),
-              const SizedBox(height: 10),
-              if (value != null)
-                FittedBox(
-                  fit: BoxFit.scaleDown,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    value!,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: -0.8,
-                      color: AppColors.ink,
-                    ),
-                  ),
-                ),
-              if (subtitle != null) ...<Widget>[
-                const SizedBox(height: 4),
-                Text(
-                  subtitle!,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    color: subtitleColor,
-                  ),
-                ),
-              ],
-              if (child != null) ...<Widget>[
-                const SizedBox(height: 10),
-                child!,
-              ],
-            ],
-          ),
+            ),
+          ],
+          if (child != null) ...<Widget>[
+            const SizedBox(height: 10),
+            child!,
+          ],
         ],
       ),
     );

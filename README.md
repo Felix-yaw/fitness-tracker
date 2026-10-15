@@ -1,8 +1,9 @@
 # fitness_tracker
 
 A modern fitness-tracking app built with Flutter using **MVVM** architecture,
-with a social **friends activity** feed — in a soft light-gray + vivid-orange
-design language with frosted-glass surfaces and an ambient mesh background.
+with a social **friends activity** feed — styled in a **neo-brutalist** design
+system: paper canvas, thick black outlines, hard offset shadows, an acid-lime
+accent and chunky type.
 
 ## Features
 
@@ -50,9 +51,12 @@ lib/
 
 ## Design
 
-- Ambient mesh background (soft radial colour blobs) + reusable `GlassCard`
-  frosted surfaces (BackdropFilter blur) for the nav bar and cards.
-- Custom-drawn bar chart (no chart dependencies); only `provider` is added.
+- Neo-brutalist design system: paper canvas with a faint dot grid, 2.5px black
+  outlines, blur-less hard offset shadows and an acid-lime accent.
+- Reusable `NeoCard` surfaces with a press-in animation, used for the nav bar
+  and every card.
+- Custom-drawn outlined bar chart (no chart dependencies); only `provider`
+  is added.
 
 ## Getting started
 

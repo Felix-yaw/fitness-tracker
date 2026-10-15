@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'core/theme/app_theme.dart';
 import 'data/repositories/fitness_repository.dart';
 import 'views/screens/root_shell.dart';
-import 'views/widgets/common/ambient_background.dart';
+import 'views/widgets/common/app_background.dart';
 
 void main() {
   runApp(const FitnessTrackerApp());
@@ -24,7 +24,7 @@ class FitnessTrackerApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: AppTheme.light(),
         builder: (BuildContext context, Widget? child) =>
-            AmbientBackground(child: child ?? const SizedBox.shrink()),
+            AppBackground(child: child ?? const SizedBox.shrink()),
         home: const RootShell(),
       ),
     );

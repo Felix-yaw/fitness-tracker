@@ -185,11 +185,9 @@ class _TypeChip extends StatelessWidget {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         decoration: BoxDecoration(
-          color: selected ? type.color : Colors.white.withValues(alpha: 0.7),
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            color: selected ? type.color : Colors.white.withValues(alpha: 0.9),
-          ),
+          color: selected ? type.color : AppColors.surface,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: AppColors.ink, width: 2),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,

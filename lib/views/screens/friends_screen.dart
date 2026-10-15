@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/friend.dart';
 import '../../viewmodels/friends_viewmodel.dart';
-import '../widgets/common/glass_card.dart';
+import '../widgets/common/neo_card.dart';
 import '../widgets/friends/friend_tile.dart';
 
 /// Friends tab: activity leaderboard with Applaud / Message actions.
@@ -24,9 +24,9 @@ class FriendsScreen extends StatelessWidget {
           const Text(
             'Friends',
             style: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.w600,
-              letterSpacing: -1.0,
+              fontSize: 34,
+              fontWeight: FontWeight.w900,
+              letterSpacing: -1.6,
               color: AppColors.ink,
             ),
           ),
@@ -40,8 +40,8 @@ class FriendsScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 18),
-          GlassCard(
-            radius: 24,
+          NeoCard(
+            radius: 18,
             padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
             child: Column(
               children: <Widget>[

@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/utils/formatters.dart';
 import '../../viewmodels/profile_viewmodel.dart';
-import '../widgets/common/glass_card.dart';
+import '../widgets/common/neo_card.dart';
 
 /// Profile tab: athlete summary and settings.
 class ProfileScreen extends StatelessWidget {
@@ -30,9 +30,9 @@ class ProfileScreen extends StatelessWidget {
           const Text(
             'Profile',
             style: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.w600,
-              letterSpacing: -1.0,
+              fontSize: 34,
+              fontWeight: FontWeight.w900,
+              letterSpacing: -1.6,
               color: AppColors.ink,
             ),
           ),
@@ -98,8 +98,8 @@ class ProfileScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 24),
-          GlassCard(
-            radius: 24,
+          NeoCard(
+            radius: 18,
             padding: const EdgeInsets.symmetric(vertical: 22),
             child: Row(
               children: <Widget>[
@@ -115,8 +115,8 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          GlassCard(
-            radius: 24,
+          NeoCard(
+            radius: 18,
             padding: const EdgeInsets.all(18),
             child: Row(
               children: <Widget>[
@@ -149,8 +149,8 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 26),
-          GlassCard(
-            radius: 24,
+          NeoCard(
+            radius: 18,
             padding: EdgeInsets.zero,
             child: Material(
               color: Colors.transparent,
@@ -162,8 +162,9 @@ class ProfileScreen extends StatelessWidget {
                         width: 42,
                         height: 42,
                         decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.6),
-                          borderRadius: BorderRadius.circular(14),
+                          color: AppColors.surfaceMuted,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: AppColors.ink, width: 2),
                         ),
                         child: Icon(
                           _menu[i].icon,
@@ -208,8 +209,8 @@ class ProfileScreen extends StatelessWidget {
             icon: const Icon(Icons.logout_rounded),
             label: const Text('Log out'),
             style: OutlinedButton.styleFrom(
-              foregroundColor: AppColors.accent,
-              side: const BorderSide(color: AppColors.accent, width: 1.4),
+              foregroundColor: AppColors.ink,
+              side: const BorderSide(color: AppColors.ink, width: 2),
             ),
           ),
           const SizedBox(height: 18),

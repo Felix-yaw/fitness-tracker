@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
 
-/// Vertical bar chart with rounded bars, optional value labels and a
-/// highlighted column.
+/// Vertical bar chart with outlined bars and optional value labels.
 class BarChart extends StatelessWidget {
   const BarChart({
     super.key,
@@ -13,7 +12,7 @@ class BarChart extends StatelessWidget {
     this.highlightIndex = -1,
     this.height = 150,
     this.color = AppColors.accent,
-    this.barWidth = 16,
+    this.barWidth = 22,
   });
 
   final List<String> labels;
@@ -78,10 +77,10 @@ class _Bar extends StatelessWidget {
         if (valueLabel != null)
           Text(
             valueLabel!,
-            style: TextStyle(
-              fontSize: 10,
-              fontWeight: FontWeight.w700,
-              color: highlighted ? AppColors.ink : AppColors.inkTertiary,
+            style: const TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w800,
+              color: AppColors.ink,
             ),
           ),
         const SizedBox(height: 8),
@@ -91,15 +90,16 @@ class _Bar extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: TweenAnimationBuilder<double>(
               tween: Tween<double>(begin: 0, end: fraction),
-              duration: const Duration(milliseconds: 650),
+              duration: const Duration(milliseconds: 600),
               curve: Curves.easeOutCubic,
               builder: (BuildContext context, double t, Widget? child) {
                 return Container(
                   width: barWidth,
-                  height: (height * t).clamp(6.0, height),
+                  height: (height * t).clamp(10.0, height),
                   decoration: BoxDecoration(
                     color: color,
                     borderRadius: BorderRadius.circular(barWidth / 2),
+                    border: Border.all(color: AppColors.ink, width: 2),
                   ),
                 );
               },
@@ -111,7 +111,7 @@ class _Bar extends StatelessWidget {
           label,
           style: const TextStyle(
             fontSize: 11,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w700,
             color: AppColors.inkSecondary,
           ),
         ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
-import '../common/glass_card.dart';
+import '../common/neo_card.dart';
 
-/// "Intensity" card with a warm glow, matching the reference.
+/// "Intensity" card with a lime badge.
 class IntensityCard extends StatelessWidget {
   const IntensityCard({
     super.key,
@@ -18,8 +18,8 @@ class IntensityCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool up = deltaPercent >= 0;
 
-    return GlassCard(
-      radius: 24,
+    return NeoCard(
+      radius: 18,
       padding: const EdgeInsets.all(20),
       child: Row(
         children: <Widget>[
@@ -28,10 +28,11 @@ class IntensityCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 const Text(
-                  'Intensity',
+                  'INTENSITY',
                   style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 0.6,
                     color: AppColors.inkSecondary,
                   ),
                 ),
@@ -43,8 +44,8 @@ class IntensityCard extends StatelessWidget {
                     '${(intensity * 100).round()}%',
                     style: const TextStyle(
                       fontSize: 40,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: -1.5,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: -1.8,
                       color: AppColors.ink,
                     ),
                   ),
@@ -54,8 +55,8 @@ class IntensityCard extends StatelessWidget {
                   '${up ? '+' : ''}${deltaPercent.toStringAsFixed(1)}% from last week',
                   style: TextStyle(
                     fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    color: up ? AppColors.positive : AppColors.accent,
+                    fontWeight: FontWeight.w700,
+                    color: up ? AppColors.positive : AppColors.alert,
                   ),
                 ),
               ],
@@ -65,15 +66,15 @@ class IntensityCard extends StatelessWidget {
             width: 64,
             height: 64,
             decoration: BoxDecoration(
+              color: AppColors.accent,
               shape: BoxShape.circle,
-              gradient: RadialGradient(
-                colors: <Color>[
-                  AppColors.accent.withValues(alpha: 0.55),
-                  AppColors.accent.withValues(alpha: 0.15),
-                ],
-              ),
+              border: Border.all(color: AppColors.ink, width: 2.5),
             ),
-            child: const Icon(Icons.bolt_rounded, color: Colors.white, size: 30),
+            child: const Icon(
+              Icons.bolt_rounded,
+              color: AppColors.ink,
+              size: 30,
+            ),
           ),
         ],
       ),

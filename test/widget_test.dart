@@ -102,8 +102,8 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.textContaining('Miranda', findRichText: true), findsWidgets);
-    expect(find.text('Activity'), findsOneWidget);
-    expect(find.text('Weekly goal'), findsWidgets);
+    expect(find.text('ACTIVITY'), findsOneWidget);
+    expect(find.text('WEEKLY GOAL'), findsWidgets);
     expect(tester.takeException(), isNull);
   });
 

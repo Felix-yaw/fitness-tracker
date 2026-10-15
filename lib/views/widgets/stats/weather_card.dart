@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../data/models/weather.dart';
+import '../common/neo_card.dart';
 
-/// Vivid orange weather card, matching the reference.
+/// Lime weather sticker, matching the neo-brutalist palette.
 class WeatherCard extends StatelessWidget {
   const WeatherCard({super.key, required this.weather});
 
@@ -11,16 +12,9 @@ class WeatherCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(24),
-        gradient: const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: <Color>[AppColors.accent, Color(0xFFFF7A3D)],
-        ),
-        boxShadow: AppColors.glowAccent,
-      ),
+    return NeoCard(
+      highlight: true,
+      radius: 18,
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +23,7 @@ class WeatherCard extends StatelessWidget {
             children: <Widget>[
               const Icon(
                 Icons.location_on_rounded,
-                color: Colors.white,
+                color: AppColors.ink,
                 size: 16,
               ),
               const SizedBox(width: 6),
@@ -39,9 +33,9 @@ class WeatherCard extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: AppColors.ink,
                     fontSize: 13,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w800,
                   ),
                 ),
               ),
@@ -54,23 +48,23 @@ class WeatherCard extends StatelessWidget {
               Text(
                 '+${weather.temperature}°C',
                 style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 40,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: -1.5,
+                  color: AppColors.ink,
+                  fontSize: 42,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: -1.8,
                 ),
               ),
               const Spacer(),
-              Icon(weather.icon, color: Colors.white, size: 40),
+              Icon(weather.icon, color: AppColors.ink, size: 40),
             ],
           ),
           const SizedBox(height: 4),
           Text(
             weather.condition,
-            style: TextStyle(
-              color: Colors.white.withValues(alpha: 0.85),
+            style: const TextStyle(
+              color: AppColors.inkSecondary,
               fontSize: 12,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],

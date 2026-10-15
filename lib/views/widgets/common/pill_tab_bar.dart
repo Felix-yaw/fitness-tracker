@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
 
-/// Horizontal row of pill filters; the selected pill is filled dark.
+/// Horizontal row of pill filters; the selected pill is filled black.
 class PillTabBar<T> extends StatelessWidget {
   const PillTabBar({
     super.key,
@@ -20,34 +20,33 @@ class PillTabBar<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40,
+      height: 46,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: items.length,
-        separatorBuilder: (_, _) => const SizedBox(width: 8),
+        separatorBuilder: (_, _) => const SizedBox(width: 10),
         itemBuilder: (BuildContext context, int index) {
           final T item = items[index];
           final bool isSelected = item == selected;
           return GestureDetector(
             onTap: () => onSelect(item),
             child: AnimatedContainer(
-              duration: const Duration(milliseconds: 220),
-              curve: Curves.easeOutCubic,
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 9),
+              duration: const Duration(milliseconds: 160),
+              curve: Curves.easeOut,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
               decoration: BoxDecoration(
                 color: isSelected ? AppColors.ink : AppColors.surface,
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: isSelected ? AppColors.ink : AppColors.cardBorder,
-                ),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: AppColors.ink, width: 2),
+                boxShadow: isSelected ? null : AppColors.hardShadowSm,
               ),
               child: Center(
                 child: Text(
                   labelOf(item),
                   style: TextStyle(
                     fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: isSelected ? Colors.white : AppColors.ink,
+                    fontWeight: FontWeight.w800,
+                    color: isSelected ? AppColors.surface : AppColors.ink,
                   ),
                 ),
               ),

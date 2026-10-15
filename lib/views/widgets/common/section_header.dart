@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
 
-/// Section title with an optional trailing "action" (e.g. "See all ›").
+/// Section title with an optional trailing action.
 class SectionHeader extends StatelessWidget {
   const SectionHeader({
     super.key,
@@ -23,9 +23,9 @@ class SectionHeader extends StatelessWidget {
           child: Text(
             title,
             style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w700,
-              letterSpacing: -0.2,
+              fontSize: 16,
+              fontWeight: FontWeight.w900,
+              letterSpacing: -0.4,
               color: AppColors.ink,
             ),
           ),
@@ -41,15 +41,15 @@ class SectionHeader extends StatelessWidget {
                   actionLabel!,
                   style: const TextStyle(
                     fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.inkSecondary,
+                    fontWeight: FontWeight.w800,
+                    color: AppColors.ink,
                   ),
                 ),
-                const SizedBox(width: 2),
+                const SizedBox(width: 3),
                 const Icon(
-                  Icons.chevron_right_rounded,
-                  size: 17,
-                  color: AppColors.inkSecondary,
+                  Icons.north_east_rounded,
+                  size: 15,
+                  color: AppColors.ink,
                 ),
               ],
             ),

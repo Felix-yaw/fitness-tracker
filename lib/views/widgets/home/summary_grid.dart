@@ -32,10 +32,10 @@ class SummaryGrid extends StatelessWidget {
               StatCard(
                 label: 'Activity',
                 value: Formatters.steps(viewModel.todaySteps),
-                glow: true,
+                highlight: true,
                 onTap: onActivityTap,
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 14),
               StatCard(
                 label: 'Calories',
                 value: Formatters.calories(viewModel.todayCalories),
@@ -43,7 +43,7 @@ class SummaryGrid extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(width: 12),
+        const SizedBox(width: 14),
         Expanded(
           child: Column(
             children: <Widget>[
@@ -51,13 +51,13 @@ class SummaryGrid extends StatelessWidget {
                 label: 'Distance',
                 value: Formatters.distanceKm(viewModel.todayDistance),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 14),
               StatCard(
                 label: 'Weekly goal',
                 value: '${(viewModel.weeklyPercent * 100).round()}%',
                 subtitle:
                     '${up ? '+' : ''}${delta.toStringAsFixed(1)}% from last week',
-                subtitleColor: up ? AppColors.positive : AppColors.accent,
+                subtitleColor: up ? AppColors.positive : AppColors.alert,
                 onTap: onWeeklyTap,
                 child: _MiniBars(values: viewModel.last7DaySteps),
               ),
@@ -69,7 +69,7 @@ class SummaryGrid extends StatelessWidget {
   }
 }
 
-/// Tiny 7-bar sparkline used inside the weekly-goal card.
+/// Tiny 7-bar sparkline with hard outlines.
 class _MiniBars extends StatelessWidget {
   const _MiniBars({required this.values});
 
@@ -92,12 +92,12 @@ class _MiniBars extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 2),
                 child: Container(
-                  height: max == 0 ? 4 : (values[i] / max * 34).clamp(4.0, 34.0),
+                  height: max == 0 ? 6 : (values[i] / max * 34).clamp(6.0, 34.0),
                   decoration: BoxDecoration(
                     color: i == values.length - 1
-                        ? AppColors.accent
-                        : AppColors.accentSoft,
-                    borderRadius: BorderRadius.circular(4),
+                        ? AppColors.ink
+                        : AppColors.ink.withValues(alpha: 0.28),
+                    borderRadius: BorderRadius.circular(3),
                   ),
                 ),
               ),

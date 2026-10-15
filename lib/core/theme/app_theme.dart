@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 
 import 'app_colors.dart';
 
-/// Builds the Material 3 theme for the expense tracker.
+/// Neo-brutalist Material 3 theme: chunky type, black outlines.
 abstract final class AppTheme {
   static ThemeData light() {
     final ColorScheme scheme = ColorScheme.fromSeed(
       seedColor: AppColors.accent,
       brightness: Brightness.light,
     ).copyWith(
-      primary: AppColors.accent,
+      primary: AppColors.ink,
       secondary: AppColors.accent,
       surface: AppColors.surface,
       surfaceTint: Colors.transparent,
@@ -23,7 +23,7 @@ abstract final class AppTheme {
       colorScheme: scheme,
       scaffoldBackgroundColor: Colors.transparent,
       textTheme: textTheme,
-      splashFactory: InkSparkle.splashFactory,
+      splashFactory: NoSplash.splashFactory,
       appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
@@ -32,84 +32,86 @@ abstract final class AppTheme {
         systemOverlayStyle: SystemUiOverlayStyle.dark,
         titleTextStyle: TextStyle(
           color: AppColors.ink,
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
+          fontSize: 22,
+          fontWeight: FontWeight.w900,
+          letterSpacing: -0.6,
         ),
         iconTheme: IconThemeData(color: AppColors.ink),
       ),
       dividerTheme: const DividerThemeData(
         color: AppColors.divider,
-        thickness: 1,
+        thickness: 1.4,
         space: 1,
-      ),
-      cardTheme: CardThemeData(
-        color: AppColors.surface,
-        surfaceTintColor: Colors.transparent,
-        elevation: 0,
-        margin: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
-        ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: Colors.white.withValues(alpha: 0.7),
-        hintStyle: const TextStyle(color: AppColors.inkTertiary),
+        fillColor: AppColors.surface,
+        hintStyle: const TextStyle(
+          color: AppColors.inkTertiary,
+          fontWeight: FontWeight.w600,
+        ),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 18,
           vertical: 16,
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18),
-          borderSide: BorderSide(
-            color: Colors.white.withValues(alpha: 0.85),
-          ),
+          borderRadius: BorderRadius.circular(14),
+          borderSide: const BorderSide(color: AppColors.ink, width: 2),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18),
-          borderSide: BorderSide(
-            color: Colors.white.withValues(alpha: 0.85),
-          ),
+          borderRadius: BorderRadius.circular(14),
+          borderSide: const BorderSide(color: AppColors.ink, width: 2),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18),
-          borderSide: const BorderSide(color: AppColors.accent, width: 1.4),
+          borderRadius: BorderRadius.circular(14),
+          borderSide: const BorderSide(color: AppColors.ink, width: 2.6),
         ),
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
           backgroundColor: AppColors.ink,
-          foregroundColor: Colors.white,
+          foregroundColor: AppColors.surface,
           elevation: 0,
           minimumSize: const Size.fromHeight(56),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(14),
+            side: const BorderSide(color: AppColors.ink, width: 2),
           ),
-          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+          textStyle: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w800,
+            letterSpacing: -0.2,
+          ),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: AppColors.ink,
+          backgroundColor: AppColors.surface,
           minimumSize: const Size.fromHeight(56),
-          side: const BorderSide(color: AppColors.divider, width: 1.4),
+          side: const BorderSide(color: AppColors.ink, width: 2),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(14),
           ),
-          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+          textStyle: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w800,
+            letterSpacing: -0.2,
+          ),
         ),
       ),
       snackBarTheme: SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
         backgroundColor: AppColors.ink,
-        elevation: 8,
+        elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(14),
+          side: const BorderSide(color: AppColors.ink, width: 2),
         ),
         contentTextStyle: const TextStyle(
-          color: Colors.white,
+          color: AppColors.surface,
           fontSize: 14,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w700,
         ),
       ),
     );
@@ -119,55 +121,57 @@ abstract final class AppTheme {
     return const TextTheme(
       displayMedium: TextStyle(
         color: AppColors.ink,
-        fontSize: 36,
-        fontWeight: FontWeight.w600,
-        letterSpacing: -1.2,
-        height: 1.1,
+        fontSize: 38,
+        fontWeight: FontWeight.w900,
+        letterSpacing: -1.8,
+        height: 1.05,
       ),
       displaySmall: TextStyle(
         color: AppColors.ink,
         fontSize: 30,
-        fontWeight: FontWeight.w600,
-        letterSpacing: -0.8,
-        height: 1.15,
+        fontWeight: FontWeight.w900,
+        letterSpacing: -1.2,
+        height: 1.1,
       ),
       headlineSmall: TextStyle(
         color: AppColors.ink,
         fontSize: 22,
-        fontWeight: FontWeight.w700,
-        letterSpacing: -0.5,
+        fontWeight: FontWeight.w800,
+        letterSpacing: -0.6,
       ),
       titleLarge: TextStyle(
         color: AppColors.ink,
         fontSize: 18,
-        fontWeight: FontWeight.w700,
-        letterSpacing: -0.3,
+        fontWeight: FontWeight.w800,
+        letterSpacing: -0.4,
       ),
       titleMedium: TextStyle(
         color: AppColors.ink,
         fontSize: 16,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w800,
       ),
       bodyLarge: TextStyle(
         color: AppColors.ink,
         fontSize: 15,
+        fontWeight: FontWeight.w500,
         height: 1.4,
       ),
       bodyMedium: TextStyle(
         color: AppColors.inkSecondary,
         fontSize: 14,
+        fontWeight: FontWeight.w500,
         height: 1.4,
       ),
       labelLarge: TextStyle(
         color: AppColors.ink,
         fontSize: 14,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w800,
       ),
       labelSmall: TextStyle(
         color: AppColors.inkSecondary,
         fontSize: 11,
-        fontWeight: FontWeight.w700,
-        letterSpacing: 0.4,
+        fontWeight: FontWeight.w800,
+        letterSpacing: 0.6,
       ),
     );
   }

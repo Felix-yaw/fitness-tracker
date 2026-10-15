@@ -4,7 +4,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../viewmodels/stats_viewmodel.dart';
 import '../common/bar_chart.dart';
-import '../common/glass_card.dart';
+import '../common/neo_card.dart';
 
 /// "Weekly goal" card: big bar chart over the last 7 days.
 class WeeklyGoalCard extends StatelessWidget {
@@ -18,8 +18,8 @@ class WeeklyGoalCard extends StatelessWidget {
     final DateTime start = bars.first.date;
     final DateTime end = bars.last.date;
 
-    return GlassCard(
-      radius: 24,
+    return NeoCard(
+      radius: 18,
       padding: const EdgeInsets.fromLTRB(18, 18, 18, 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,8 +31,8 @@ class WeeklyGoalCard extends StatelessWidget {
                   'Weekly goal',
                   style: TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: -0.3,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: -0.5,
                     color: AppColors.ink,
                   ),
                 ),
@@ -41,14 +41,14 @@ class WeeklyGoalCard extends StatelessWidget {
                 Formatters.dateRange(start, end),
                 style: const TextStyle(
                   fontSize: 12,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
                   color: AppColors.inkSecondary,
                 ),
               ),
               const Icon(
-                Icons.chevron_right_rounded,
-                size: 18,
-                color: AppColors.inkTertiary,
+                Icons.north_east_rounded,
+                size: 15,
+                color: AppColors.ink,
               ),
             ],
           ),

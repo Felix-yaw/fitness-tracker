@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
 
-/// Big "Hi, {name}" greeting with a soft avatar.
+/// Big "Hi, {name}" greeting with a lime sticker avatar.
 class GreetingHeader extends StatelessWidget {
   const GreetingHeader({
     super.key,
@@ -23,21 +23,18 @@ class GreetingHeader extends StatelessWidget {
               children: <InlineSpan>[
                 const TextSpan(
                   text: 'Hi, ',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.ink,
-                  ),
+                  style: TextStyle(fontWeight: FontWeight.w500),
                 ),
                 TextSpan(
                   text: name,
-                  style: const TextStyle(fontWeight: FontWeight.w700),
+                  style: const TextStyle(fontWeight: FontWeight.w900),
                 ),
               ],
             ),
             style: const TextStyle(
-              fontSize: 34,
-              letterSpacing: -1.2,
-              height: 1.1,
+              fontSize: 36,
+              letterSpacing: -1.8,
+              height: 1.0,
               color: AppColors.ink,
             ),
           ),
@@ -47,21 +44,19 @@ class GreetingHeader extends StatelessWidget {
           child: Container(
             width: 56,
             height: 56,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: <Color>[AppColors.accent, Color(0xFFFF8A5B)],
-              ),
+            decoration: BoxDecoration(
+              color: AppColors.accent,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: AppColors.ink, width: 2.5),
+              boxShadow: AppColors.hardShadowSm,
             ),
             child: const Center(
               child: Text(
                 'M',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.ink,
                   fontSize: 22,
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w900,
                 ),
               ),
             ),
