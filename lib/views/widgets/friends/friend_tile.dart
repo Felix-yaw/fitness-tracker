@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../data/models/friend.dart';
+import 'action_pill.dart';
+import 'friend_avatar.dart';
 
 /// A friend row with their activity and Applaud / Message actions.
 class FriendTile extends StatelessWidget {
@@ -25,7 +27,7 @@ class FriendTile extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          _Avatar(friend: friend),
+          FriendAvatar(friend: friend),
           const SizedBox(width: 14),
           Expanded(
             child: Column(
@@ -76,110 +78,18 @@ class FriendTile extends StatelessWidget {
                   spacing: 8,
                   runSpacing: 8,
                   children: <Widget>[
-                    _Pill(
+                    ActionPill(
                       label: applauded ? 'Applauded' : 'Applaud',
                       filled: applauded,
                       onTap: onApplaud,
                     ),
-                    _Pill(label: 'Message', onTap: onMessage),
+                    ActionPill(label: 'Message', onTap: onMessage),
                   ],
                 ),
               ],
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _Avatar extends StatelessWidget {
-  const _Avatar({required this.friend});
-
-  final Friend friend;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 48,
-      height: 48,
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: <Widget>[
-          Container(
-            width: 48,
-            height: 48,
-            decoration: BoxDecoration(
-              color: AppColors.surface,
-              shape: BoxShape.circle,
-              border: Border.all(color: AppColors.ink, width: 2),
-            ),
-            child: Center(
-              child: Text(
-                friend.initials,
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w900,
-                  color: AppColors.ink,
-                ),
-              ),
-            ),
-          ),
-          if (friend.isActiveToday)
-            Positioned(
-              right: -2,
-              bottom: -2,
-              child: Container(
-                width: 16,
-                height: 16,
-                decoration: BoxDecoration(
-                  color: AppColors.positive,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: AppColors.ink, width: 2),
-                ),
-              ),
-            ),
-        ],
-      ),
-    );
-  }
-}
-
-class _Pill extends StatelessWidget {
-  const _Pill({
-    required this.label,
-    required this.onTap,
-    this.filled = false,
-  });
-
-  final String label;
-  final VoidCallback onTap;
-  final bool filled;
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: filled ? AppColors.ink : AppColors.surface,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-        side: const BorderSide(color: AppColors.ink, width: 2),
-      ),
-      child: InkWell(
-        customBorder: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w800,
-              color: filled ? AppColors.surface : AppColors.ink,
-            ),
-          ),
-        ),
       ),
     );
   }

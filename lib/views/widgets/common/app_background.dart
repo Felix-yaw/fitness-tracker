@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
+import 'dot_grid_painter.dart';
 
 /// Flat paper canvas with a faint dot grid, sitting behind the whole app.
 class AppBackground extends StatelessWidget {
@@ -15,28 +16,10 @@ class AppBackground extends StatelessWidget {
       children: <Widget>[
         const ColoredBox(color: AppColors.background),
         const Positioned.fill(
-          child: CustomPaint(painter: _DotGridPainter()),
+          child: CustomPaint(painter: DotGridPainter()),
         ),
         Positioned.fill(child: child),
       ],
     );
   }
-}
-
-class _DotGridPainter extends CustomPainter {
-  const _DotGridPainter();
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final Paint paint = Paint()..color = const Color(0x1414110C);
-    const double gap = 26;
-    for (double x = gap / 2; x < size.width; x += gap) {
-      for (double y = gap / 2; y < size.height; y += gap) {
-        canvas.drawCircle(Offset(x, y), 1.4, paint);
-      }
-    }
-  }
-
-  @override
-  bool shouldRepaint(_DotGridPainter oldDelegate) => false;
 }

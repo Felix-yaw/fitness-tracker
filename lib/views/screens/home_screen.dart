@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../data/models/activity.dart';
 import '../../navigation/app_routes.dart';
+import '../../viewmodels/activity_filter.dart';
 import '../../viewmodels/home_viewmodel.dart';
 import '../widgets/common/pill_tab_bar.dart';
 import '../widgets/common/section_header.dart';

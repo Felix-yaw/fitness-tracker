@@ -1,22 +1,14 @@
 import '../core/utils/formatters.dart';
 import '../data/models/activity.dart';
+import 'activity_filter.dart';
 import 'view_model.dart';
-
-/// Filter for the recent-activity list.
-enum ActivityFilter {
-  all('All'),
-  morning('Morning activities'),
-  recovery('Recovery');
-
-  const ActivityFilter(this.label);
-  final String label;
-}
 
 /// Backs the Home/dashboard screen.
 class HomeViewModel extends ViewModel {
   HomeViewModel(super.repository);
 
   ActivityFilter _filter = ActivityFilter.all;
+
   ActivityFilter get filter => _filter;
 
   void setFilter(ActivityFilter filter) {

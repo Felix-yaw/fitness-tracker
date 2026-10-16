@@ -5,17 +5,20 @@ import '../../core/theme/app_colors.dart';
 import '../../core/utils/formatters.dart';
 import '../../viewmodels/profile_viewmodel.dart';
 import '../widgets/common/neo_card.dart';
+import '../widgets/profile/menu_item.dart';
+import '../widgets/profile/profile_stat.dart';
+import '../widgets/profile/stat_divider.dart';
 
 /// Profile tab: athlete summary and settings.
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
-  static const List<_MenuItem> _menu = <_MenuItem>[
-    _MenuItem(Icons.flag_outlined, 'Goals'),
-    _MenuItem(Icons.watch_outlined, 'Devices'),
-    _MenuItem(Icons.notifications_none_rounded, 'Notifications'),
-    _MenuItem(Icons.lock_outline_rounded, 'Privacy'),
-    _MenuItem(Icons.help_outline_rounded, 'Help & support'),
+  static const List<MenuItem> _menu = <MenuItem>[
+    MenuItem(Icons.flag_outlined, 'Goals'),
+    MenuItem(Icons.watch_outlined, 'Devices'),
+    MenuItem(Icons.notifications_none_rounded, 'Notifications'),
+    MenuItem(Icons.lock_outline_rounded, 'Privacy'),
+    MenuItem(Icons.help_outline_rounded, 'Help & support'),
   ];
 
   @override
@@ -103,14 +106,14 @@ class ProfileScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 22),
             child: Row(
               children: <Widget>[
-                _Stat(value: '${vm.streakDays}', label: 'Day streak'),
-                const _StatDivider(),
-                _Stat(
+                ProfileStat(value: '${vm.streakDays}', label: 'Day streak'),
+                const StatDivider(),
+                ProfileStat(
                   value: Formatters.compactNumber(vm.totalSteps),
                   label: 'Steps',
                 ),
-                const _StatDivider(),
-                _Stat(value: '${vm.totalActivities}', label: 'Workouts'),
+                const StatDivider(),
+                ProfileStat(value: '${vm.totalActivities}', label: 'Workouts'),
               ],
             ),
           ),
@@ -223,56 +226,5 @@ class ProfileScreen extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-@immutable
-class _MenuItem {
-  const _MenuItem(this.icon, this.title);
-  final IconData icon;
-  final String title;
-}
-
-class _Stat extends StatelessWidget {
-  const _Stat({required this.value, required this.label});
-
-  final String value;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: <Widget>[
-          Text(
-            value,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w800,
-              letterSpacing: -0.6,
-              color: AppColors.ink,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: AppColors.inkSecondary,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _StatDivider extends StatelessWidget {
-  const _StatDivider();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(width: 1, height: 36, color: AppColors.divider);
   }
 }

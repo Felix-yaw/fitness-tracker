@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/formatters.dart';
+import '../../../viewmodels/daily_bar.dart';
 import '../../../viewmodels/stats_viewmodel.dart';
 import '../common/bar_chart.dart';
 import '../common/neo_card.dart';

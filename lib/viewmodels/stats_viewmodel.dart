@@ -1,20 +1,8 @@
 import '../core/utils/formatters.dart';
 import '../data/models/activity.dart';
 import '../data/models/weather.dart';
+import 'daily_bar.dart';
 import 'view_model.dart';
-
-/// A single bar in the weekly chart.
-class DailyBar {
-  const DailyBar({
-    required this.label,
-    required this.value,
-    required this.date,
-  });
-
-  final String label;
-  final double value;
-  final DateTime date;
-}
 
 /// Backs the Statistics screen.
 class StatsViewModel extends ViewModel {
